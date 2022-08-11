@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="loginViewModel"
+            type="son.peace.login.presentation.LogInViewModel" />
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.LogInActivity">
+
+        <TextView
+            android:id="@+id/textview_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqa_han_sans_neo_bold"
+            android:includeFontPadding="false"
+            android:text="GitHub Log In"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.15" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textinput_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textview_login"
+            app:layout_constraintVertical_bias="0.2"
+            app:layout_constraintWidth_percent="0.85">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edittext_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:inputType="text"
+                android:text="@={loginViewModel.userName}"
+                android:fontFamily="@font/spoqa_han_sans_neo_medium"
+                android:hint="@string/github_name"
+                android:textSize="15sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/button_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Log In"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/textinput_name"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/textinput_name"
+            app:layout_constraintTop_toBottomOf="@id/textinput_name"
+            app:layout_constraintVertical_bias="0.081" />
+
+        <TextView
+            android:id="@+id/textview_signup_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't you have any account? "
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            app:layout_constraintEnd_toStartOf="@+id/textview_goto_signup"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_login" />
+
+        <TextView
+            android:id="@+id/textview_goto_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sing up in 30 sec"
+            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            app:layout_constraintBottom_toBottomOf="@+id/textview_signup_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginStart="15dp"
+            app:layout_constraintStart_toEndOf="@+id/textview_signup_info"
+            app:layout_constraintTop_toTopOf="@+id/textview_signup_info" />
+
+        <TextView
+            android:id="@+id/textview_alert_network"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="네트워크 연결이 원활하지 않습니다."
+            android:layout_marginBottom="50dp"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:visibility="@{loginViewModel.uiState.isNetworkAvailable ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

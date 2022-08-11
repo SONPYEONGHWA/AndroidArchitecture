@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="myPageViewModel"
+            type="son.peace.mypage.presentation.MyPageViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.MyPageFragment">
+
+        <TextView
+            android:id="@+id/textview_my"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqa_han_sans_neo_bold"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="26dp"
+            android:textColor="@color/black"
+            android:textSize="28dp"
+            android:text="My"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageview_profile"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="20dp"
+            loadImage="@{myPageViewModel.uiState.myInfo.profileImage}"
+            cornerRadius="@{@dimen/dimen_10dp}"
+            app:layout_constraintTop_toBottomOf="@id/textview_my"
+            app:layout_constraintStart_toStartOf="@id/textview_my"/>
+
+        <TextView
+            android:id="@+id/textview_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqa_han_sans_neo_bold"
+            android:layout_marginStart="15dp"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:text="@{myPageViewModel.uiState.myInfo.name}"
+            app:layout_constraintStart_toEndOf="@id/imageview_profile"
+            app:layout_constraintTop_toTopOf="@id/imageview_profile"
+            tools:text="SONPYEONGHWA"/>
+
+        <TextView
+            android:id="@+id/textview_follower_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqa_han_sans_neo_bold"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:layout_marginTop="10dp"
+            android:text="Follower : "
+            app:layout_constraintStart_toStartOf="@id/textview_name"
+            app:layout_constraintTop_toBottomOf="@id/textview_name" />
+
+        <TextView
+            android:id="@+id/textview_follower_count_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqa_han_sans_neo_bold"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:text="@{String.valueOf(myPageViewModel.uiState.myInfo.followerCount)}"
+            app:layout_constraintStart_toEndOf="@id/textview_follower_count"
+            app:layout_constraintTop_toTopOf="@id/textview_follower_count"
+            app:layout_constraintBottom_toBottomOf="@id/textview_follower_count"
+            tools:text="10"/>
+
+        <TextView
+            android:id="@+id/textview_following_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqa_han_sans_neo_bold"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:layout_marginTop="10dp"
+            android:text="Following : "
+            app:layout_constraintStart_toStartOf="@id/textview_follower_count"
+            app:layout_constraintTop_toBottomOf="@id/textview_follower_count" />
+
+        <TextView
+            android:id="@+id/textview_following_count_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqa_han_sans_neo_bold"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:text="@{String.valueOf(myPageViewModel.uiState.myInfo.followingCount)}"
+            app:layout_constraintStart_toEndOf="@id/textview_following_count"
+            app:layout_constraintTop_toTopOf="@id/textview_following_count"
+            app:layout_constraintBottom_toBottomOf="@id/textview_following_count"
+            tools:text="10"/>
+
+        <TextView
+            android:id="@+id/textview_public_repo_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqa_han_sans_neo_bold"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:layout_marginTop="10dp"
+            android:text="Public Repository : "
+            app:layout_constraintStart_toStartOf="@id/textview_following_count"
+            app:layout_constraintTop_toBottomOf="@id/textview_following_count" />
+
+        <TextView
+            android:id="@+id/textview_public_repo_count_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/spoqa_han_sans_neo_bold"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:text="@{String.valueOf(myPageViewModel.uiState.myInfo.publicRepository)}"
+            app:layout_constraintStart_toEndOf="@id/textview_public_repo_count"
+            app:layout_constraintTop_toTopOf="@id/textview_public_repo_count"
+            app:layout_constraintBottom_toBottomOf="@id/textview_public_repo_count"
+            tools:text="10"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_follower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Followers"
+            android:fontFamily="@font/spoqa_han_sans_neo_medium"
+            android:textSize="20dp"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/imageview_profile"
+            app:layout_constraintTop_toBottomOf="@id/imageview_profile"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_followers"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="26dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textview_follower"
+            app:layout_constraintVertical_bias="0.03"
+            tools:listitem="@layout/item_follower">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
