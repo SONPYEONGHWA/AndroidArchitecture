@@ -13,4 +13,6 @@
     <color name="sub_color_green">#79d794</color>
     <color name="sub_color_blue">#8acde2</color>
     <color name="sub_color_purple">#c987d7</color>
+    <color name="black_alpha_70">#B3000000</color>
+
 </resources>

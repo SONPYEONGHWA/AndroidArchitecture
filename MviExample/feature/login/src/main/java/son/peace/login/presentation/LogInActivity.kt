@@ -1,11 +1,15 @@
 package son.peace.login.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
+import son.peace.common.R
 import son.peace.common.extenstions.collectWhenStarted
+import son.peace.common.extenstions.getDeviceHeight
 import son.peace.common.extenstions.showToast
+import son.peace.common.presentation.AlertMessageBuilder
 import son.peace.login.databinding.ActivityLogInBinding
 import javax.inject.Inject
 
@@ -33,6 +37,10 @@ class LogInActivity: AppCompatActivity() {
     }
 
     private fun render() {
+        val alertMessage = AlertMessageBuilder(binding.rootlayout)
+            .setMessage("네트워크 연결 상태를 확인해주세요.")
+            .build()
+
         collectWhenStarted(loginViewModel.effect) { effect ->
             when(effect) {
                 is LogInContract.LoginEffect.NavigateToMainView -> {
@@ -42,6 +50,10 @@ class LogInActivity: AppCompatActivity() {
                     showToast("존재하지 않는 유저입니다.")
                 }
             }
+        }
+
+        collectWhenStarted(loginViewModel.uiState) { state ->
+                alertMessage.setMessageVisibility(!state.isNetworkAvailable)
         }
     }
 }

@@ -8,6 +8,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rootlayout"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -93,19 +94,6 @@
             android:layout_marginStart="15dp"
             app:layout_constraintStart_toEndOf="@+id/textview_signup_info"
             app:layout_constraintTop_toTopOf="@+id/textview_signup_info" />
-
-        <TextView
-            android:id="@+id/textview_alert_network"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="네트워크 연결이 원활하지 않습니다."
-            android:layout_marginBottom="50dp"
-            android:gravity="center"
-            android:textSize="20dp"
-            android:visibility="@{loginViewModel.uiState.isNetworkAvailable ? View.GONE : View.VISIBLE}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
