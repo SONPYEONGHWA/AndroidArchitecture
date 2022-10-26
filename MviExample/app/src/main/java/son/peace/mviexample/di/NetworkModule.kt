@@ -1,5 +1,6 @@
 package son.peace.mviexample.di
 
+import com.apollographql.apollo3.ApolloClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -49,4 +50,13 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideMyPageApiService(retrofit: Retrofit): MyPageApiService = retrofit.create()
+
+
+    @Provides
+    @Singleton
+    fun provideApolloClient(): ApolloClient =
+        ApolloClient.Builder()
+            .serverUrl("https://api.github.com/graphql")
+            .addHttpHeader("Authorization", "Bearer ${BuildConfig.GRAPHQL_TOKEN}")
+            .build()
 }

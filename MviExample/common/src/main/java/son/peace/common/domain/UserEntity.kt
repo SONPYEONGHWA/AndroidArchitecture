@@ -1,8 +1,8 @@
 package son.peace.common.domain
 
 data class UserEntity(
-    val id: Int,
-    val profileImage: String,
+    val id: String,
+    val profileImage: Any,
     val name: String,
     val email: String?,
     val followerCount: Int?,

@@ -1,0 +1,35 @@
+query User($login: String!) {
+    user(login: $login) {
+        id
+        name
+        avatarUrl
+        email
+        followers(first: 100) {
+            nodes {
+                name
+            }
+            pageInfo {
+                hasNextPage
+                endCursor
+            }
+        }
+        following(first:100) {
+            nodes {
+                name
+            }
+            pageInfo {
+                hasNextPage
+                endCursor
+            }
+        }
+        repositories(first: 100) {
+            nodes {
+                name
+            }
+            pageInfo {
+                hasNextPage
+                endCursor
+            }
+        }
+    }
+}

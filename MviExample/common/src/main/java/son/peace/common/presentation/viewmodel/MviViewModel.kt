@@ -9,7 +9,7 @@ import son.peace.core.MviIntent
 import son.peace.core.MviSideEffect
 import son.peace.core.MviViewState
 
-abstract class MviViewModel<I: MviIntent, S: MviViewState,E: MviSideEffect>: ViewModel() {
+abstract class MviViewModel<I: MviIntent, S: MviViewState, E: MviSideEffect>: ViewModel() {
     abstract fun setInitialState(): S
     abstract fun handleEvents(mviIntent: I)
 

@@ -53,6 +53,8 @@ dependencies {
     implementation(Dependencies.ThirdPartyDep.COIL)
     implementation(Dependencies.ThirdPartyDep.GSON)
     implementation(Dependencies.ThirdPartyDep.COROUTINES)
+    implementation("com.apollographql.apollo3:apollo-runtime:3.6.2")
+
 
     implementation(project(Modules.CORE_MODULE))
     implementation(project(Modules.COMMON_MODULE))

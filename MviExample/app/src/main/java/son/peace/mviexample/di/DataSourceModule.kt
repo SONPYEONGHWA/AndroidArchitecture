@@ -1,5 +1,6 @@
 package son.peace.mviexample.di
 
+import com.apollographql.apollo3.ApolloClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,8 +19,8 @@ object DataSourceModule {
 
     @Provides
     @Singleton
-    fun provideLoginDataSource(loginApiService: LoginApiService): LoginDataSource =
-        LoginDataSourceImpl(loginApiService)
+    fun provideLoginDataSource(apolloClient: ApolloClient): LoginDataSource =
+        LoginDataSourceImpl(apolloClient)
 
     @Provides
     @Singleton

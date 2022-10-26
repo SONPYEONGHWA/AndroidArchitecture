@@ -53,4 +53,6 @@ dependencies {
 
     implementation(project(Modules.CORE_MODULE))
     implementation(project(Modules.COMMON_MODULE))
+    implementation("com.apollographql.apollo3:apollo-runtime:3.6.2")
+
 }

@@ -14,6 +14,7 @@ properties.load(project.rootProject.file("local.properties").inputStream())
 android {
     compileSdk = DefaultConfig.COMPILE_SDK
 
+
     defaultConfig {
         applicationId = DefaultConfig.APPLICATION_ID
         minSdk = DefaultConfig.MIN_SDK
@@ -23,6 +24,8 @@ android {
         testInstrumentationRunner = DefaultConfig.TEST_INSTRUMENTATION_RUNNER
         buildConfigField("String", "BASE_URL", properties.getProperty("BASE_URL"))
         buildConfigField("String", "GITHUB_TOKEN", properties.getProperty("GITHUB_TOKEN"))
+        buildConfigField("String", "GRAPHQL_TOKEN", properties.getProperty("GRAPHQL_TOKEN"))
+
     }
 
     buildTypes {
@@ -31,10 +34,12 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -43,6 +48,7 @@ android {
         dataBinding = true
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -63,5 +69,7 @@ dependencies {
     implementation(project(Modules.FRIENDS_MODULE))
     implementation(project(Modules.MY_PAGE_MODULE))
     implementation(project(Modules.LOGIN_MODULE))
+
+    implementation("com.apollographql.apollo3:apollo-runtime:3.6.2")
 
 }

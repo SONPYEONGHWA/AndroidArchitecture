@@ -1,6 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("com.apollographql.apollo3")
+
 }
 
 android {
@@ -30,6 +32,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    apollo {
+        packageName.set("com.test.graphql")
+    }
 }
 
 dependencies {
@@ -37,4 +42,6 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     implementation(Dependencies.ThirdPartyDep.COROUTINES)
+    implementation("com.apollographql.apollo3:apollo-runtime:3.6.2")
+
 }
